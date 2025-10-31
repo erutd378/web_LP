@@ -1,0 +1,1490 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAIBOKPATITIKAT - Tattoo Studio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2a0303;
+            --secondary-color: #D2691E;
+            --accent-color: #CD853F;
+            --dark-color: #331d04;
+            --light-color: #ccb76a;
+            --text-color: #333;
+            --text-light: #fff;
+            --transition: all 0.5s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-color);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(36, 35, 35, 0.9);
+            padding: 15px 0;
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            padding: 10px 0;
+            box-shadow: 0 5px 15px rgba(221, 216, 216, 0.881);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            background-color: var(--secondary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--light-color);
+            font-size: 24px;
+            border: 2px solid var(--accent-color);
+        }
+
+        .logo-text {
+            color: var(--light-color);
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            letter-spacing: 2px;
+        }
+
+        .language-switcher {
+            display: flex;
+            gap: 10px;
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            color: var(--light-color);
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: var(--transition);
+        }
+
+        .lang-btn:hover {
+            color: var(--secondary-color);
+        }
+
+        .lang-btn.active {
+            color: var(--secondary-color);
+            border-bottom: 1px solid var(--secondary-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            color: var(--light-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--light-color);
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: -1;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: var(--light-color);
+            z-index: 1;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--secondary-color);
+            color: var(--light-color);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark-color);
+            display: inline-block;
+            position: relative;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-img {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            transform: translateX(-50px);
+            opacity: 0;
+            transition: all 0.8s ease;
+        }
+
+        .about-img.in-view {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .about-text {
+            flex: 1;
+            transform: translateX(50px);
+            opacity: 0;
+            transition: all 0.8s ease;
+        }
+
+        .about-text.in-view {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        /* Projects Section */
+        .projects {
+            background-color: var(--dark-color);
+            color: var(--light-color);
+        }
+
+        .projects .section-title h2 {
+            color: var(--light-color);
+        }
+
+        .project-categories {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .category-btn {
+            padding: 10px 20px;
+            background-color: transparent;
+            color: var(--light-color);
+            border: 2px solid var(--secondary-color);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+        }
+
+        .category-btn.active, .category-btn:hover {
+            background-color: var(--secondary-color);
+            color: var(--dark-color);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-item {
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            transform: translateY(50px);
+            opacity: 0;
+            transition: all 0.8s ease;
+        }
+
+        .project-item.in-view {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .project-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .project-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: var(--light-color);
+            transform: translateY(100%);
+            transition: var(--transition);
+        }
+
+        .project-item:hover .project-overlay {
+            transform: translateY(0);
+        }
+
+        .project-item:hover .project-img {
+            transform: scale(1.1);
+        }
+
+        /* Gallery Section */
+        .gallery-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .gallery-tab {
+            padding: 10px 20px;
+            background-color: transparent;
+            color: var(--dark-color);
+            border: 2px solid var(--secondary-color);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+        }
+
+        .gallery-tab.active, .gallery-tab:hover {
+            background-color: var(--secondary-color);
+            color: var(--light-color);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transform: scale(0.9);
+            opacity: 0;
+            transition: all 0.8s ease;
+        }
+
+        .gallery-item.in-view {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.1);
+        }
+
+        /* Video Section */
+        .videos {
+            background-color: var(--dark-color);
+            color: var(--light-color);
+        }
+
+        .videos .section-title h2 {
+            color: var(--light-color);
+        }
+
+        .video-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .video-tab {
+            padding: 10px 20px;
+            background-color: transparent;
+            color: var(--light-color);
+            border: 2px solid var(--secondary-color);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+        }
+
+        .video-tab.active, .video-tab:hover {
+            background-color: var(--secondary-color);
+            color: var(--dark-color);
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .video-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            transform: translateY(50px);
+            opacity: 0;
+            transition: all 0.8s ease;
+        }
+
+        .video-item.in-view {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Location Section */
+        .location-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            transform: translateY(50px);
+            opacity: 0;
+            transition: all 0.8s ease;
+        }
+
+        .map-container.in-view {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--dark-color);
+            color: var(--light-color);
+        }
+
+        .contact .section-title h2 {
+            color: var(--light-color);
+        }
+
+        .contact-content {
+            display: flex;
+            gap: 50px;
+        }
+
+        .contact-info {
+            flex: 1;
+            transform: translateX(-50px);
+            opacity: 0;
+            transition: all 0.8s ease;
+        }
+
+        .contact-info.in-view {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .contact-form {
+            flex: 1;
+            transform: translateX(50px);
+            opacity: 0;
+            transition: all 0.8s ease;
+        }
+
+        .contact-form.in-view {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--secondary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--light-color);
+            font-size: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--light-color);
+            font-family: 'Raleway', sans-serif;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .footer-logo {
+            flex: 1;
+        }
+
+        .footer-links {
+            flex: 2;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .footer-links h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links ul li a {
+            color: var(--light-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background-color: var(--secondary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+        }
+
+        /* Modal for Image Gallery */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+
+        .modal-img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: var(--light-color);
+            font-size: 30px;
+            cursor: pointer;
+            z-index: 2001;
+        }
+
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--light-color);
+            font-size: 40px;
+            cursor: pointer;
+            z-index: 2001;
+            background-color: rgba(0, 0, 0, 0.5);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .modal-prev {
+            left: 20px;
+        }
+
+        .modal-next {
+            right: 20px;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-content, .contact-content {
+                flex-direction: column;
+            }
+            
+            .about-img, .about-text, .contact-info, .contact-form {
+                transform: none;
+                opacity: 1;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--dark-color);
+                flex-direction: column;
+                padding: 20px 0;
+                text-align: center;
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .video-grid, .projects-grid, .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-img">
+                    <i class="fas fa-dragon"></i>
+                </div>
+                <div class="logo-text">LP</div>
+            </div>
+            
+            <div class="language-switcher">
+                <button class="lang-btn active" id="lang-id">
+                    <i class="fas fa-flag"></i> ID
+                </button>
+                <button class="lang-btn" id="lang-en">
+                    <i class="fas fa-flag-usa"></i> EN
+                </button>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="#home" data-id="Beranda" data-en="Home">Beranda</a></li>
+                    <li><a href="#about" data-id="Tentang" data-en="About">Tentang</a></li>
+                    <li><a href="#projects" data-id="Projek" data-en="Projects">Projek</a></li>
+                    <li><a href="#gallery" data-id="Galeri" data-en="Gallery">Galeri</a></li>
+                    <li><a href="#videos" data-id="Video" data-en="Videos">Video</a></li>
+                    <li><a href="#location" data-id="Lokasi" data-en="Location">Lokasi</a></li>
+                    <li><a href="#contact" data-id="Kontak" data-en="Contact">Kontak</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <video autoplay muted loop class="hero-video">
+            <source src="baground.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1 data-id="Selamat Datang Laibokpatitikat" data-en="Welcome Laibokpatitikat">Welcome Laibokpatitikat</h1>
+            <a href="#about" class="btn" data-id="Jelajahi Karya Kami" data-en="Explore Our Work">Jelajahi Karya Kami</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-id="Tentang Kami" data-en="About Us">Tentang Kami</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="tentang.jpg" alt="Tattoo Artist">
+                </div>
+                <div class="about-text">
+                    <h3 data-id="Seni Tato yang Menginspirasi" data-en="Inspiring Tattoo Art">Seni Tato yang Menginspirasi</h3>
+                    <p data-id="LAIBOKPATITIKAT adalah studio tato yang menggabungkan seni tradisional dengan teknik modern. Didirikan oleh seniman tato berpengalaman, kami berkomitmen untuk menciptakan karya seni tubuh yang unik dan bermakna bagi setiap klien." data-en="LAIBOKPATITIKAT is a tattoo studio that combines traditional art with modern techniques. Founded by experienced tattoo artists, we are committed to creating unique and meaningful body art for every client.">LAIBOKPATITIKAT adalah studio tato yang menggabungkan seni tradisional dengan teknik modern. Didirikan oleh seniman tato berpengalaman, kami berkomitmen untuk menciptakan karya seni tubuh yang unik dan bermakna bagi setiap klien.</p>
+                    <p data-id="Dengan pengalaman lebih dari 10 tahun dalam industri tato, tim kami telah mengembangkan gaya yang khas yang mencerminkan warisan budaya sambil tetap mengikuti tren terkini. Setiap desain dibuat khusus untuk mencerminkan kepribadian dan cerita hidup Anda." data-en="With over 10 years of experience in the tattoo industry, our team has developed a distinctive style that reflects cultural heritage while keeping up with the latest trends. Each design is custom-made to reflect your personality and life story.">Dengan pengalaman lebih dari 10 tahun dalam industri tato, tim kami telah mengembangkan gaya yang khas yang mencerminkan warisan budaya sambil tetap mengikuti tren terkini. Setiap desain dibuat khusus untuk mencerminkan kepribadian dan cerita hidup Anda.</p>
+                    <a href="#contact" class="btn" data-id="Konsultasi Gratis" data-en="Free Consultation">Hubungi kami dengan cepat</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-id="Projek Kami" data-en="Our Projects">Projek Kami</h2>
+            </div>
+            <div class="project-categories">
+                <button class="category-btn active" data-category="all" data-id="Semua" data-en="All">Semua</button>
+                <button class="category-btn" data-category="travel" data-id="Perjalanan" data-en="Travel">Perjalanan</button>
+                <button class="category-btn" data-category="tattoo-making" data-id="Pembuatan Tato" data-en="Tattoo Making">Pembuatan Tato</button>
+                <button class="category-btn" data-category="journey" data-id="Perjalanan" data-en="Journey">Perjalanan</button>
+            </div>
+            <div class="projects-grid">
+                <!-- Project items will be dynamically added here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-id="Galeri" data-en="Gallery">Galeri</h2>
+            </div>
+            <div class="gallery-tabs">
+                <button class="gallery-tab active" data-category="tattoo" data-id="Galeri Tato" data-en="Tattoo Gallery">Galeri Tato</button>
+                <button class="gallery-tab" data-category="tradition" data-id="Tradisi" data-en="Tradition">Tradisi</button>
+                <button class="gallery-tab" data-category="sikerei" data-id="Galeri Sikerei" data-en="Sikerei Gallery">Galeri Sikerei</button>
+                <button class="gallery-tab" data-category="uma" data-id="Galeri Uma" data-en="Uma Gallery">Galeri Uma</button>
+            </div>
+            <div class="gallery-grid">
+                <!-- Gallery items will be dynamically added here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="videos" id="videos">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-id="Video" data-en="Videos">Video</h2>
+            </div>
+            <div class="video-tabs">
+                <button class="video-tab active" data-category="sikerei" data-id="Video Sikerei" data-en="Sikerei Video">Video Sikerei</button>
+                <button class="video-tab" data-category="shooting" data-id="Video Shooting" data-en="Shooting Video">Video Shooting</button>
+                <button class="video-tab" data-category="tattoo-making" data-id="Video Pembuatan Tato" data-en="Tattoo Making Video">Video Pembuatan Tato</button>
+            </div>
+            <div class="video-grid">
+                <!-- Video items will be dynamically added here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="location">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-id="Lokasi Kami" data-en="Our Location">Lokasi Kami</h2>
+            </div>
+            <div class="location-content">
+                <div class="map-container">
+                    <!-- Google Maps iframe will be added here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-id="Hubungi Kami" data-en="Contact Us">Hubungi Kami</h2>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3 data-id="Informasi Kontak" data-en="Contact Information">Informasi Kontak</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4 data-id="Alamat" data-en="Address">Alamat</h4>
+                            <p data-id="Jl. Mentawai, Indonesia" data-en="Tattoo Art Street mentawai, Indonesia">Jl. mentawai, Indonesia</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h4 data-id="Telepon" data-en="Phone">Telepon</h4>
+                            <p>+62 812 3456 7890</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4 data-id="Email" data-en="Email">Email</h4>
+                            <p>info@laibokpatitikat.com</p>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3 data-id="Kirim Pesan" data-en="Send Message">Kirim Pesan</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Nama" data-id="Nama" data-en="Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Email" data-id="Email" data-en="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Subjek" data-id="Subjek" data-en="Subject" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" placeholder="Pesan" data-id="Pesan" data-en="Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn" data-id="Kirim Pesan" data-en="Send Message">Kirim Pesan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="logo">
+                        <div class="logo-img">
+                            <i class="fas fa-dragon"></i>
+                        </div>
+                        <div class="logo-text">LAIBOKPATITIKAT</div>
+                    </div>
+                    <p data-id="Studio Tato Seni Tradisional & Modern" data-en="Traditional & Modern Tattoo Art Studio">Studio Tato Seni Tradisional & Modern</p>
+                </div>
+                <div class="footer-links">
+                    <div>
+                        <h3 data-id="Tautan Cepat" data-en="Quick Links">Tautan Cepat</h3>
+                        <ul>
+                            <li><a href="#home" data-id="Beranda" data-en="Home">Beranda</a></li>
+                            <li><a href="#about" data-id="Tentang" data-en="About">Tentang</a></li>
+                            <li><a href="#projects" data-id="Projek" data-en="Projects">Projek</a></li>
+                            <li><a href="#gallery" data-id="Galeri" data-en="Gallery">Galeri</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 data-id="Layanan" data-en="Services">Layanan</h3>
+                        <ul>
+                            <li><a href="#" data-id="Tato Kustom" data-en="Custom Tattoo">Tato Kustom</a></li>
+                            <li><a href="#" data-id="Tato Tradisional" data-en="Traditional Tattoo">Tato Tradisional</a></li>
+                            <li><a href="#" data-id="Konsultasi Desain" data-en="Design Consultation">Konsultasi Desain</a></li>
+                            <li><a href="#" data-id="Perawatan Tato" data-en="Tattoo Aftercare">Perawatan Tato</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 data-id="Bantuan" data-en="Help">Bantuan</h3>
+                        <ul>
+                            <li><a href="#" data-id="FAQ" data-en="FAQ">FAQ</a></li>
+                            <li><a href="#" data-id="Kebijakan Privasi" data-en="Privacy Policy">Kebijakan Privasi</a></li>
+                            <li><a href="#" data-id="Syarat & Ketentuan" data-en="Terms & Conditions">Syarat & Ketentuan</a></li>
+                            <li><a href="#contact" data-id="Kontak" data-en="Contact">Kontak</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 LAIBOKPATITIKAT. <span data-id="Seluruh hak cipta dilindungi." data-en="All rights reserved.">Seluruh hak cipta dilindungi.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Image Modal -->
+    <div class="modal" id="imageModal">
+        <span class="modal-close" id="modalClose">&times;</span>
+        <div class="modal-nav modal-prev" id="modalPrev">
+            <i class="fas fa-chevron-left"></i>
+        </div>
+        <div class="modal-nav modal-next" id="modalNext">
+            <i class="fas fa-chevron-right"></i>
+        </div>
+        <div class="modal-content">
+            <img src="" alt="" class="modal-img" id="modalImg">
+        </div>
+    </div>
+
+    <script>
+        // Data for projects, gallery, and videos
+        const projectsData = [
+            {
+                id: 1,
+                title: { id: "Perjalanan Budaya Mentawai", en: "Mentawai Cultural Journey" },
+                category: "travel",
+                image: "foto1.jpg"
+            },
+            {
+                id: 2,
+                title: { id: "Proses Pembuatan Tato Tradisional", en: "Traditional Tattoo Making Process" },
+                category: "tattoo-making",
+                image: "foto2.jpg"
+            },
+            {
+                id: 3,
+                title: { id: "Ekspedisi Seni Tato", en: "Tattoo Art Expedition" },
+                category: "journey",
+                image: "foto3.jpg"
+            },
+            {
+                id: 4,
+                title: { id: "Workshop Tato Tradisional", en: "Traditional Tattoo Workshop" },
+                category: "tattoo-making",
+                image: "foto4.jpg"
+            },
+            {
+                id: 5,
+                title: { id: "Perjalanan ke Desa Adat", en: "Journey to Traditional Village" },
+                category: "travel",
+                image: "foto5.jpg"
+            },
+            {
+                id: 6,
+                title: { id: "Dokumentasi Proses Tato", en: "Tattoo Process Documentation" },
+                category: "journey",
+                image: "cofee.jpg"
+            }
+        ];
+
+        const galleryData = {
+            tattoo: [
+                { id: 1, image: "foto1.jpg" },
+                { id: 2, image: "foto2.jpg" },
+                { id: 3, image: "foto3.jpg" },
+                { id: 4, image: "foto4.jpg" },
+                { id: 5, image: "foto5.jpg" },
+                { id: 6, image: "https://images.unsplash.com/photo-1595079675751-1d0d0e2a4b6f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" }
+            ],
+            tradition: [
+                { id: 1, image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" },
+                { id: 2, image: "https://images.unsplash.com/photo-1605647533135-51b5906087d0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" },
+                { id: 3, image: "https://images.unsplash.com/photo-1594736797933-d0c6e4d78c6a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" },
+                { id: 4, image: "https://images.unsplash.com/photo-1570698276426-7c57d8e4109c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" },
+                { id: 5, image: "https://images.unsplash.com/photo-1611339555312-e607e663f2a7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" },
+                { id: 6, image: "https://images.unsplash.com/photo-1595079835355-3818c80c2c7d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" }
+            ],
+            sikerei: [
+                { id: 1, image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" },
+                { id: 2, image: "https://images.unsplash.com/photo-1605647533135-51b5906087d0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" },
+                { id: 3, image: "https://images.unsplash.com/photo-1594736797933-d0c6e4d78c6a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" },
+                { id: 4, image: "https://images.unsplash.com/photo-1570698276426-7c57d8e4109c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" },
+                { id: 5, image: "https://images.unsplash.com/photo-1611339555312-e607e663f2a7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" },
+                { id: 6, image: "https://images.unsplash.com/photo-1595079835355-3818c80c2c7d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" }
+            ],
+            uma: [
+                { id: 1, image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" },
+                { id: 2, image: "https://images.unsplash.com/photo-1605647533135-51b5906087d0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" },
+                { id: 3, image: "https://images.unsplash.com/photo-1594736797933-d0c6e4d78c6a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" },
+                { id: 4, image: "https://images.unsplash.com/photo-1570698276426-7c57d8e4109c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" },
+                { id: 5, image: "https://images.unsplash.com/photo-1611339555312-e607e663f2a7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" },
+                { id: 6, image: "https://images.unsplash.com/photo-1595079835355-3818c80c2c7d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" }
+            ]
+        };
+
+        const videosData = {
+            sikerei: [
+                { id: 1, title: { id: "Ritual Sikerei Mentawai", en: "Mentawai Sikerei Ritual" }, url: "https://www.youtube.com/embed/Ts3AAO4I6l4" },
+                { id: 2, title: { id: "Kehidupan Sehari-hari Sikerei", en: "Sikerei Daily Life" }, url: "https://www.youtube.com/embed/AinH2xMD9V8" },
+                { id: 3, title: { id: "Warisan Budaya Sikerei", en: "Sikerei Cultural Heritage" }, url: "https://www.youtube.com/embed/sCZ_CKhaRF4" }
+            ],
+            shooting: [
+                { id: 1, title: { id: "Behind The Scene Dokumenter", en: "Documentary Behind The Scene" }, url: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
+                { id: 2, title: { id: "Proses Pembuatan Film Pendek", en: "Short Film Making Process" }, url: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
+                { id: 3, title: { id: "Interview dengan Seniman Tato", en: "Interview with Tattoo Artists" }, url: "https://www.youtube.com/embed/dQw4w9WgXcQ" }
+            ],
+            "tattoo-making": [
+                { id: 1, title: { id: "Teknik Tato Tradisional", en: "Traditional Tattoo Techniques" }, url: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
+                { id: 2, title: { id: "Proses Pembuatan Tato Lengan", en: "Arm Tattoo Making Process" }, url: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
+                { id: 3, title: { id: "Alat dan Bahan Tato Tradisional", en: "Traditional Tattoo Tools and Materials" }, url: "https://www.youtube.com/embed/dQw4w9WgXcQ" }
+            ]
+        };
+
+        // Language state
+        let currentLanguage = 'id';
+
+        // DOM Elements
+        const header = document.getElementById('header');
+        const mobileMenuBtn = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+        const langIdBtn = document.getElementById('lang-id');
+        const langEnBtn = document.getElementById('lang-en');
+        const projectsGrid = document.querySelector('.projects-grid');
+        const galleryGrid = document.querySelector('.gallery-grid');
+        const videoGrid = document.querySelector('.video-grid');
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        const galleryTabs = document.querySelectorAll('.gallery-tab');
+        const videoTabs = document.querySelectorAll('.video-tab');
+        const imageModal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImg');
+        const modalClose = document.getElementById('modalClose');
+        const modalPrev = document.getElementById('modalPrev');
+        const modalNext = document.getElementById('modalNext');
+        const contactForm = document.getElementById('contactForm');
+        const mapContainer = document.querySelector('.map-container');
+
+        // Initialize the website
+        function init() {
+            // Load projects
+            loadProjects('all');
+            
+            // Load gallery
+            loadGallery('tattoo');
+            
+            // Load videos
+            loadVideos('sikerei');
+            
+            // Load map
+            loadMap();
+            
+            // Add event listeners
+            addEventListeners();
+            
+            // Initialize scroll animations
+            initScrollAnimations();
+        }
+
+        // Load projects based on category
+        function loadProjects(category) {
+            projectsGrid.innerHTML = '';
+            
+            const filteredProjects = category === 'all' 
+                ? projectsData 
+                : projectsData.filter(project => project.category === category);
+            
+            filteredProjects.forEach(project => {
+                const projectItem = document.createElement('div');
+                projectItem.className = 'project-item';
+                projectItem.innerHTML = `
+                    <img src="${project.image}" alt="${project.title[currentLanguage]}" class="project-img">
+                    <div class="project-overlay">
+                        <h3>${project.title[currentLanguage]}</h3>
+                    </div>
+                `;
+                projectsGrid.appendChild(projectItem);
+            });
+            
+            // Add scroll animation to project items
+            setTimeout(() => {
+                const projectItems = document.querySelectorAll('.project-item');
+                projectItems.forEach(item => {
+                    item.classList.add('in-view');
+                });
+            }, 100);
+        }
+
+        // Load gallery based on category
+        function loadGallery(category) {
+            galleryGrid.innerHTML = '';
+            
+            galleryData[category].forEach(item => {
+                const galleryItem = document.createElement('div');
+                galleryItem.className = 'gallery-item';
+                galleryItem.innerHTML = `
+                    <img src="${item.image}" alt="Gallery Image" class="gallery-img">
+                `;
+                galleryGrid.appendChild(galleryItem);
+            });
+            
+            // Add scroll animation to gallery items
+            setTimeout(() => {
+                const galleryItems = document.querySelectorAll('.gallery-item');
+                galleryItems.forEach(item => {
+                    item.classList.add('in-view');
+                });
+            }, 100);
+        }
+
+        // Load videos based on category
+        function loadVideos(category) {
+            videoGrid.innerHTML = '';
+            
+            videosData[category].forEach(video => {
+                const videoItem = document.createElement('div');
+                videoItem.className = 'video-item';
+                videoItem.innerHTML = `
+                    <div class="video-container">
+                        <iframe src="${video.url}" title="${video.title[currentLanguage]}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <h3>${video.title[currentLanguage]}</h3>
+                `;
+                videoGrid.appendChild(videoItem);
+            });
+            
+            // Add scroll animation to video items
+            setTimeout(() => {
+                const videoItems = document.querySelectorAll('.video-item');
+                videoItems.forEach(item => {
+                    item.classList.add('in-view');
+                });
+            }, 100);
+        }
+
+        // Load Google Maps
+        function loadMap() {
+            mapContainer.innerHTML = `
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322283!2d106.8195613502864!3d-6.194741395493371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5390917b759%3A0x6b45e83956a7cc74!2sMonumen%20Nasional!5e0!3m2!1sid!2sid!4v1590292333373!5m2!1sid!2sid" 
+                    width="100%" 
+                    height="100%" 
+                    frameborder="0" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    aria-hidden="false" 
+                    tabindex="0">
+                </iframe>
+            `;
+        }
+
+        // Change language
+        function changeLanguage(lang) {
+            currentLanguage = lang;
+            
+            // Update language buttons
+            if (lang === 'id') {
+                langIdBtn.classList.add('active');
+                langEnBtn.classList.remove('active');
+            } else {
+                langEnBtn.classList.add('active');
+                langIdBtn.classList.remove('active');
+            }
+            
+            // Update all elements with data-id and data-en attributes
+            const translatableElements = document.querySelectorAll('[data-id], [data-en]');
+            translatableElements.forEach(element => {
+                if (element.hasAttribute(`data-${lang}`)) {
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        element.placeholder = element.getAttribute(`data-${lang}`);
+                    } else {
+                        element.textContent = element.getAttribute(`data-${lang}`);
+                    }
+                }
+            });
+            
+            // Reload dynamic content with new language
+            const activeCategory = document.querySelector('.category-btn.active').dataset.category;
+            loadProjects(activeCategory);
+            
+            const activeVideoTab = document.querySelector('.video-tab.active').dataset.category;
+            loadVideos(activeVideoTab);
+        }
+
+        // Initialize scroll animations
+        function initScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe elements for animation
+            const animatedElements = document.querySelectorAll('.about-img, .about-text, .project-item, .gallery-item, .video-item, .map-container, .contact-info, .contact-form');
+            animatedElements.forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // Add event listeners
+        function addEventListeners() {
+            // Mobile menu toggle
+            mobileMenuBtn.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
+            
+            // Language switcher
+            langIdBtn.addEventListener('click', () => changeLanguage('id'));
+            langEnBtn.addEventListener('click', () => changeLanguage('en'));
+            
+            // Project category buttons
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    loadProjects(btn.dataset.category);
+                });
+            });
+            
+            // Gallery tabs
+            galleryTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    galleryTabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    loadGallery(tab.dataset.category);
+                });
+            });
+            
+            // Video tabs
+            videoTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    videoTabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    loadVideos(tab.dataset.category);
+                });
+            });
+            
+            // Image modal
+            document.addEventListener('click', (e) => {
+                if (e.target.classList.contains('gallery-img')) {
+                    const src = e.target.getAttribute('src');
+                    modalImg.setAttribute('src', src);
+                    imageModal.style.display = 'flex';
+                }
+            });
+            
+            modalClose.addEventListener('click', () => {
+                imageModal.style.display = 'none';
+            });
+            
+            // Close modal when clicking outside the image
+            imageModal.addEventListener('click', (e) => {
+                if (e.target === imageModal) {
+                    imageModal.style.display = 'none';
+                }
+            });
+            
+            // Contact form submission
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert(currentLanguage === 'id' 
+                    ? 'Pesan berhasil dikirim! Terima kasih.' 
+                    : 'Message sent successfully! Thank you.');
+                contactForm.reset();
+            });
+            
+            // Header scroll effect
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+            
+            // Smooth scroll for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        // Close mobile menu if open
+                        navMenu.classList.remove('active');
+                        
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Initialize the website when DOM is loaded
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
